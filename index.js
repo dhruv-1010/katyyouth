@@ -163,27 +163,29 @@ app.get('/route/:id', async (req, res) => {
 
 // route 1 
 // main index route
+// 
+app.use(function(req,res,next){
+    res.locals.currentUser = req.user;
+    next();
+  })
 app.get('/', async (req, res) => {
+    let journeyObj = await JourneyDB.find({});
     if (req.isAuthenticated()) {
         // The user is logged in
-        let journeyObj = await JourneyDB.find({});
       res.render('userHome',{journeyObj});
-
     } else {
-        res.render('home')
+        res.render('home',{journeyObj});
         // The user is logged out 
     }
 })
-// 
 app.get('/home', async (req, res) => {
+    let journeyObj = await JourneyDB.find({});
     if (req.isAuthenticated()) {
         // The user is logged in
-        let journeyObj = await JourneyDB.find({});
       res.render('userHome',{journeyObj});
 
     } else {
-        let journeyObj = await JourneyDB.find({});
-        res.render('home')
+        res.render('home',{journeyObj});
         // The user is logged out 
     }
 })

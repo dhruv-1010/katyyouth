@@ -9,8 +9,7 @@ font-family: 'DM Serif Display', serif;
 font-family: 'Poppins', sans-serif;
 font-family: 'Signika', sans-serif; */
 body{
-font-family: 'Poppins', serif;
-}
+    font-family: 'Signika', cursive;}
 .button{
     padding:0 2vw;
     font-size:15px;  
@@ -59,4 +58,16 @@ footer{
     height: 50vh;
     margin: 0;
     text-align: center;
+}
+#listing{
+    display: grid;
+    margin: 10px 10vw;
+}
+.carddiv{
+    border-radius: 10px;
+    border: 3px solid rgba(172, 255, 47, 0.438);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 20px;
+
 }

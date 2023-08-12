@@ -29,6 +29,7 @@
                 <li id="contact">Contact Volunteers!!</li>
             </a>
         </ul>
+        <p>hello <%= currentUser.username %> </p>
         <a href="/logout"><button class=" button login-button" >Logout</button></a>
     </nav>
     <section  id="main">
@@ -182,6 +183,20 @@
           </div>
         </div>
       </div>
+    </section>
+    <section id="listing">
+      <h2 style="text-align:center;color:Green;">Recent Listings!!</h2>
+      <%let it=0;%>
+        <% for(let item of journeyObj){it++; if(it<4){ %>
+          <div class="carddiv">
+            <h1>By : <%=item.name%>
+            </h1>
+            <p>
+              On : <%=item.date.toDateString()%><br>
+              <%=item.fromLocation%> - <%=item.toLocation%>
+            </p>
+          </div>
+          <%} else break; }%>
     </section>
     <%- include('./partials/footer')%>
     <!-- <script
