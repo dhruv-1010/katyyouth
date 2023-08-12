@@ -1,3 +1,12 @@
 <%- include('./partials/navbar') %>
+
+<% for(let it of journeyObj){ %>
+    <h1>Posted By :: <%=it.name%></h1>
+    <h1>From :: <%=it.fromLocation%></h1>
+    <h1>TO :: <%=it.toLocation%></h1>
+    <h1>Contact :: <%= it.email %>   <%=it.mobile%></h1>
+    <h1>Posted On :: <%=it.created%></h1>
+    <h1>edited :: <%=it.updated%></h1>
+    <%}%>
 </body>
 </html>
