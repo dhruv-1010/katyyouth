@@ -10,7 +10,8 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/UserDB')
-const session = require('express-session')
+const session = require('express-session');
+const { render } = require('ejs');
 // body parser
 app.use(express.urlencoded({ extended: true })); //for form data
 app.use(methodOverride('_method'))
@@ -72,10 +73,24 @@ app.get('/logout', function(req, res, next){
 // route 1 
 // API ROUTE 1 INDEX ROUTE
 app.get('/',(req,res)=>{
-    res.render('home')
+    if (req.isAuthenticated()) {
+        // The user is logged in
+        res.render('userHome')
+
+      } else {
+        res.render('home')
+        // The user is logged out
+      }
 })
 app.get('/home',(req,res)=>{
-    res.render('home')
+    if (req.isAuthenticated()) {
+        // The user is logged in
+        res.render('userHome')
+
+      } else {
+        res.render('home')
+        // The user is logged out
+      }
 })
 // ROUTE 2
 // new comment route
