@@ -1,9 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@600;800&family=Signika:wght@600&display=swap');
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+/* }
+font-family: 'DM Serif Display', serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Signika', sans-serif; */
+body{
+font-family: 'Poppins', serif;
+}
 .button{
-    margin:10px;
-    font-size:20px;  
+    padding:0 2vw;
+    font-size:15px;  
+    border: 0;
+    border-radius: 10px;   
+    /* z-index: 9999; */
+}
+
+#navbar{
+    display: grid;
+    grid-template-columns: 3fr 8fr 1fr 1fr;
+    background: transparent;
+}
+#list{
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 10px;
+}
+#head{
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    font-size: 2vw;
+    font-family: 'DM Serif Display', serif;
+}
+#list li{
+    margin:0 20px;
+}
+#list a{
+    text-decoration: none;
+    color:inherit;
+}
+#list li:hover{
+    border-bottom: 2px solid black;
+    transition: 2s;
+    transition-timing-function: ease-in;
+}
+#navbar a{
+    padding-top: 1vw;
+}
+footer{
+    background: url('wave.svg') no-repeat ;
+    background-size: 100vw;
+    height: 50vh;
+    margin: 0;
+    text-align: center;
 }
