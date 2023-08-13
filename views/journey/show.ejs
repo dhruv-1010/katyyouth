@@ -1,33 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>journies</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
-        img{
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@600;800&family=Signika:wght@600&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        #details{
+            display: grid;
+            grid-template-columns: 2fr 4fr;
+        }
+        img {
             height: 45vw;
         }
+
+        table {
+            border: 1px solid #eeeeee;
+            border-collapse: collapse;
+
+            padding: 0;
+            max-width: 500px;
+            margin: 20px;
+
+            table-layout: fixed;
+        }
+
+        table caption {
+            font-size: 1.5em;
+            margin: .5em 0 .75em;
+        }
+
+        thead td {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+
+            font-size: 1.2rem;
+        }
+
+        table tr {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+
+        table th {
+            font-size: .85em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        tr:hover {
+            background: rgba(123, 153, 218, .1);
+        }
+
+        #navbar {
+            display: grid;
+            grid-template-columns: 3fr 8fr 1fr 1fr;
+            background: #ccc;
+        }
+
+        body {
+            font-family: 'Signika', cursive;
+        }
+
+        #list {
+            display: flex;
+            list-style: none;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            padding: 10px;
+        }
+
+        #head {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2vw;
+            font-family: 'DM Serif Display', serif;
+        }
+
+        #list li {
+            margin: 0 20px;
+        }
+
+        #list a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        #list li:hover {
+            border-bottom: 2px solid black;
+        }
+
+        #navbar a {
+            padding-top: 1vw;
+        }
     </style>
+    <!-- <link rel="stylesheet" href="/public/app.css"> -->
 </head>
+
 <body>
     <div id="parent">
         <nav id="navbar">
-        <h1 id="head">EcoRides</h1>
-        <ul id="list">
-            <a href="/home">
-                <li id="home">Home</li>
-            </a>
-            <a href="#">
-                <li id="contact">Contact Volunteers!!</li>
-            </a>
-        </ul>
-    </nav>
-    <!-- iske niche card laga do bass  -->
-            <!-- isme changes krke display kara de  -->
-        <h1><%=found.name%></h1>
-        <!-- thoda bhut display karna h -->
-        <!-- idhar hi map lagega -->
-        </a>
+            <h1 id="head">EcoRides</h1>
+            <ul id="list">
+                <a href="/home">
+                    <li id="home">Home</li>
+                </a>
+                <a href="/route">
+                    <li>
+                        Return to List
+                    </li>
+
+                </a>
+                <a href="#">
+                    <li id="contact">Contact Volunteers!!</li>
+                </a>
+            </ul>
+        </nav>
+        <div id="details">
+            <div id="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Name :</td>
+                            <td>
+                                <%=found.name%>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            Date
+                        </td>
+
+                        <td class="points">
+                            <%=found.date.toDateString()%>
+                        </td>
+                    </tr>
+                    </tr>
+                    <tr>
+                        <td>
+                            From
+                        </td>
+                        <td class="name" id="fromLocation">
+                            <%=found.fromLocation%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            To
+                        </td>
+                        <td class="name" id="toLocation">
+                            <%=found.toLocation%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            E-mail
+                        </td>
+                        <td class="name">
+                            <%=found.email%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Phone Number
+                        </td>
+                        <td class="name">
+                            <%=found.mobile%>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div id="distance">
+                </div>
+            </div>
+            <div id="map" style="width: 45vw; height: 400px;"></div>
+        </div>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script>
+            const map = L.map('map').setView([0, 0], 2); // Initial map view
+            const apiKey = 'dcb473db0eca4c50af41d28f0daa514d';
+            const city1 = document.getElementById('fromLocation').textContent; // Get the text content of the element
+            const city2 = document.getElementById('toLocation').textContent; // Get the text content of the element
+        
+            let coords1, coords2; // Define the variables
+        
+            const geocodeUrl1 = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(city1)}&key=${apiKey}`;
+            const geocodeUrl2 = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(city2)}&key=${apiKey}`;
+        
+            const distanceDiv = document.getElementById('distance'); // Move this line here
+        
+            Promise.all([
+                fetch(geocodeUrl1).then(response => response.json()).then(data => data.results[0].geometry),
+                fetch(geocodeUrl2).then(response => response.json()).then(data => data.results[0].geometry)
+            ]).then(([result1, result2]) => { // Use a .then() to wait for both promises to resolve
+                coords1 = result1;
+                coords2 = result2;
+        
+                const distance = calculateDistance(coords1.lat, coords1.lng, coords2.lat, coords2.lng);
+        
+                distanceDiv.textContent = `Distance between ${city1} and ${city2}: ${distance.toFixed(2)} kilometers`;
+        
+                // Set up the map after coordinates are obtained
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+        
+                const pathStyle = {
+                    color: 'green', // Green line color
+                    weight: 5
+                };
+        
+                const path = L.polyline([[coords1.lat, coords1.lng], [coords2.lat, coords2.lng]], pathStyle).addTo(map);
+        
+                const bounds = L.latLngBounds([[coords1.lat, coords1.lng], [coords2.lat, coords2.lng]]);
+                map.fitBounds(bounds);
+            }).catch(error => {
+                console.error('Error:', error);
+                distanceDiv.textContent = 'An error occurred. Please try again.';
+            });
+        
+            function calculateDistance(lat1, lon1, lat2, lon2) {
+                const earthRadius = 6371; // Radius of the Earth in kilometers
+                const dLat = degToRad(lat2 - lat1);
+                const dLon = degToRad(lon2 - lon1);
+                const a =
+                    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(degToRad(lat1)) * Math.cos(degToRad(lat2)) *
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                return earthRadius * c;
+            }
+        
+            function degToRad(deg) {
+                return deg * (Math.PI / 180);
+            }
+        </script>
+        
+
 </body>
+
 </html>

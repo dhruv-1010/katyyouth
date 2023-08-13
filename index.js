@@ -103,6 +103,9 @@ the journey api routes
 //   });
 
 */
+app.get('/map',(req,res)=>{
+    res.render('test');
+})
 
 app.get('/search', async (req, res) => {
   const searchLocation = req.query.location;
