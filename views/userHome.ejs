@@ -43,44 +43,55 @@
         <img src="undraw (2).svg">
       </section>
     </section>
+
     
+
+    <section id="initiative">
+      <h1>What Our Team Want</h1>
+      <div>
+        <img src="./Icons/deadEarth.jpg" alt="">
+        <h2>&#8594</h2>
+        <img src="./Icons/fresh.png" alt="">
+      </div>
+    </section>
+
     <section class="leader-board-s">
       <div class="leaderboard-about">
         <h1>Happy journey</h1>
         <div class="container">
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
-              <!-- Indicators -->
-              <ul class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
-              </ul>
-            
-              <!-- Slides -->
-              <div class="carousel-inner">
-                  <div class="carousel-item active">
-                      <img src="undraw (1).svg" alt="Image 1">
-                  </div>
-                  <div class="carousel-item">
-                      <img src="undraw (2).svg" alt="Image 2">
-                  </div>
-                  <div class="carousel-item">
-                      <img src="undraw (3).svg" alt="Image 3">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="undraw (4).svg" alt="Image 3">
-                </div>
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ul>
+
+            <!-- Slides -->
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="undraw (1).svg" alt="Image 1">
               </div>
-            
-              <!-- Controls -->
-              <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-                  <span class="carousel-control-prev-icon"></span>
-              </a>
-              <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-                  <span class="carousel-control-next-icon"></span>
-              </a>
+              <div class="carousel-item">
+                <img src="undraw (2).svg" alt="Image 2">
+              </div>
+              <div class="carousel-item">
+                <img src="undraw (3).svg" alt="Image 3">
+              </div>
+              <div class="carousel-item">
+                <img src="undraw (4).svg" alt="Image 3">
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
           </div>
-      </div>
+        </div>
       </div>
       <div class="learder-board-m">
         <div id="header">
@@ -135,6 +146,7 @@
         </div>
       </div>
     </section>
+  
 
     <section id="help" class="help_wrapper">
       <h1>How It Works</h1>
@@ -143,11 +155,7 @@
           <div class="col-lg-4 col-sm-6 mb-4">
             <div class="card rounded-0 border-0 text-center h-100">
               <div>
-                <img
-                  src="./Icons/steering-wheel.png"
-                  class="card-img-top"
-                  alt="..."
-                />
+                <img src="./Icons/car.png" class="card-img-top" alt="..." />
               </div>
               <h5 class="text-uppercase mt-4 mb-3">Find Your Ride</h5>
               <p class="card-text">
@@ -158,11 +166,7 @@
           <div class="col-lg-4 col-sm-6 mb-4">
             <div class="card rounded-0 border-0 text-center h-100">
               <div>
-                <img
-                  src="./Icons/handshake.png"
-                  class="card-img-top"
-                  alt="..."
-                />
+                <img src="./Icons/handshake.png" class="card-img-top" alt="..." />
               </div>
               <h5 class="text-uppercase mt-4 mb-3">Select Partner</h5>
               <p class="card-text">Select your partner and contact them</p>
@@ -171,11 +175,7 @@
           <div class="col-lg-4 col-sm-6 mb-4">
             <div class="card rounded-0 border-0 text-center h-100">
               <div>
-                <img
-                  decoding="async"
-                  src="./Icons/steering-wheel.png"
-                  class="card-img-top"
-                />
+                <img decoding="async" src="./Icons/steering-wheel.png" class="card-img-top" />
               </div>
               <h5 class="text-uppercase mt-4 mb-3">Travel Together</h5>
               <p class="card-text">Decide your journey scenerio and travel</p>
@@ -184,8 +184,9 @@
         </div>
       </div>
     </section>
-    <section id="listing">
-      <h2 style="text-align:center;color:Green;">Recent Listings!!</h2>
+    
+    <section id="listing" >
+      <h3 style="color:green;text-align: center;">Recent Listing</h3>
       <%let it=0;%>
         <% for(let item of journeyObj){it++; if(it<4){ %>
           <div class="carddiv">
@@ -198,7 +199,59 @@
           </div>
           <%} else break; }%>
     </section>
+
+
+    <section id="effects">
+      <h1>Why To Share?</h1>
+      <div id="points">
+        <div class="point">
+          <h5>Health Impacts</h5>
+          <p>CO2 emissions and other pollutants can have serious health consequences</p>
+        </div>
+        <div class="point">
+          <h5>Ecosystem Damage</h5>
+          <p>CO2 levels contribute to ocean acidification, harming marine life</p>
+        </div>
+        <div class="point">
+          <h5>Resource Depletion</h5>
+          <p>Consumption of fossil fuels contribute to resource depletion and habitat destruction</p>
+        </div>
+        <div class="point">
+          <h5>Noise Pollution</h5>
+          <p>Disturb wildlife and negatively impact human well-being, leading to stress, sleep disturbances</p>
+        </div>
+        <div class="point">
+          <h5>Climate Change</h5>
+          <p>CO2 is a greenhouse gas that contributes to the enhanced greenhouse effect and global warming</p>
+        </div>
+        <div class="point">
+          <h5>Less Traffic</h5>
+          <p>Reducing of vehicles on roads will reduce Traffic, travellers can save their time</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="features">
+      <h1>Why To Choose Us</h1>
+      <div id="perks">
+        <div class="perk">
+            <img src="./LeaderBoard/co2.png" alt="">
+            <h2>10KT+ Carbon Emission Reduced</h2>
+        </div>
+        <div class="perk">
+            <h2>5.6LAC+ Rupee Saved</h2>
+            <img src="./LeaderBoard/savings.png" alt="">
+        </div>
+        <div class="perk">
+          <img src="./LeaderBoard/accident.png" alt="">
+          <h2>0 Accidents</h2>
+        </div>
+      </div>
+    </section>  
+
     <%- include('./partials/footer')%>
+
     <!-- <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

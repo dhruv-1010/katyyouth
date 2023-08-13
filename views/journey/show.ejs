@@ -14,10 +14,12 @@
             margin: 0;
             padding: 0;
         }
-        #details{
+
+        #details {
             display: grid;
             grid-template-columns: 2fr 4fr;
         }
+
         img {
             height: 45vw;
         }
@@ -189,7 +191,13 @@
                     </tbody>
                 </table>
                 <div id="distance">
+                    Distance Travelled: Calculating....
                 </div>
+                <p id="co2Saved">CO2 Emissions Saved: Calculating...</p>
+                <p id="fuelSaved">Fuel Saved: Calculating...</p>
+                <p id="treesPlanted">Trees Planted Equivalent: Calculating...</p>
+                <p id="moneySaved">Money Saved: Calculating...</p>
+                <p id="climateHelped">Climate Impact: Calculating...</p>
             </div>
             <div id="map" style="width: 45vw; height: 400px;"></div>
         </div>
@@ -199,44 +207,63 @@
             const apiKey = 'dcb473db0eca4c50af41d28f0daa514d';
             const city1 = document.getElementById('fromLocation').textContent; // Get the text content of the element
             const city2 = document.getElementById('toLocation').textContent; // Get the text content of the element
-        
+
             let coords1, coords2; // Define the variables
-        
+
             const geocodeUrl1 = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(city1)}&key=${apiKey}`;
             const geocodeUrl2 = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(city2)}&key=${apiKey}`;
-        
+
             const distanceDiv = document.getElementById('distance'); // Move this line here
-        
+
             Promise.all([
                 fetch(geocodeUrl1).then(response => response.json()).then(data => data.results[0].geometry),
                 fetch(geocodeUrl2).then(response => response.json()).then(data => data.results[0].geometry)
             ]).then(([result1, result2]) => { // Use a .then() to wait for both promises to resolve
                 coords1 = result1;
                 coords2 = result2;
-        
+
                 const distance = calculateDistance(coords1.lat, coords1.lng, coords2.lat, coords2.lng);
-        
+
                 distanceDiv.textContent = `Distance between ${city1} and ${city2}: ${distance.toFixed(2)} kilometers`;
-        
+                const co2SavedElement = document.getElementById('co2Saved');
+                const fuelSavedElement = document.getElementById('fuelSaved');
+                const treesPlantedElement = document.getElementById('treesPlanted');
+                const moneySavedElement = document.getElementById('moneySaved');
+                const climateHelpedElement = document.getElementById('climateHelped');
+
+                // const distance = calculateDistance(coords1.lat, coords1.lng, coords2.lat, coords2.lng);
+                const co2Saved = calculateCO2Saved(distance);
+                const fuelSaved = calculateFuelSaved(distance);
+                const treesPlanted = calculateTreesPlanted(co2Saved);
+                const moneySaved = calculateMoneySaved(fuelSaved);
+                const climateHelped = calculateClimateImpact(co2Saved, treesPlanted, moneySaved);
+
+                co2SavedElement.textContent = `CO2 Emissions Saved: ${co2Saved.toFixed(2)} kg`;
+                fuelSavedElement.textContent = `Fuel Saved: ${fuelSaved.toFixed(2)} liters`;
+                treesPlantedElement.textContent = `Trees Planted Equivalent: ${treesPlanted.toFixed(2)}`;
+                moneySavedElement.textContent = `Money Saved: $${moneySaved.toFixed(2)}`;
+                climateHelpedElement.textContent = `Climate Impact: ${climateHelped.toFixed(2)}`;
+
+
                 // Set up the map after coordinates are obtained
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
-        
+
                 const pathStyle = {
                     color: 'green', // Green line color
                     weight: 5
                 };
-        
+
                 const path = L.polyline([[coords1.lat, coords1.lng], [coords2.lat, coords2.lng]], pathStyle).addTo(map);
-        
+
                 const bounds = L.latLngBounds([[coords1.lat, coords1.lng], [coords2.lat, coords2.lng]]);
                 map.fitBounds(bounds);
             }).catch(error => {
                 console.error('Error:', error);
                 distanceDiv.textContent = 'An error occurred. Please try again.';
             });
-        
+
             function calculateDistance(lat1, lon1, lat2, lon2) {
                 const earthRadius = 6371; // Radius of the Earth in kilometers
                 const dLat = degToRad(lat2 - lat1);
@@ -248,12 +275,59 @@
                 const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
                 return earthRadius * c;
             }
-        
+
             function degToRad(deg) {
                 return deg * (Math.PI / 180);
+
             }
+
+
+            function calculateCO2Saved(distanceKm) {
+                // Average car emission in g CO2 per km
+                const carEmissionPerKm = 180; // Example value, actual values can vary
+
+                return (carEmissionPerKm / 1000) * distanceKm;
+            }
+
+            // Function to calculate fuel saved (in liters) when carpooling
+            function calculateFuelSaved(distanceKm) {
+                // Average car fuel efficiency in km per liter
+                const carFuelEfficiency = 15; // Example value, actual values can vary
+
+                return distanceKm / carFuelEfficiency;
+            }
+
+            // Function to calculate equivalent trees planted
+            function calculateTreesPlanted(co2Saved) {
+                // Average CO2 absorption per tree in kg per year
+                const co2AbsorptionPerTree = 20; // Example value, actual values can vary
+
+                return co2Saved / co2AbsorptionPerTree;
+            }
+
+            // Function to calculate money saved (based on fuel cost)
+            function calculateMoneySaved(fuelSaved) {
+                // Average fuel cost in local currency per liter
+                const fuelCostPerLiter = 5; // Example value, actual values can vary
+
+                return fuelSaved * fuelCostPerLiter;
+            }
+
+            // Function to calculate climate impact (combined metric)
+            function calculateClimateImpact(co2Saved, treesPlanted, moneySaved) {
+                // Arbitrary weighting for simplicity
+                const co2Weight = 0.5;
+                const treesWeight = 0.2;
+                const moneyWeight = 0.3;
+
+                // Combine metrics and apply weights
+                return (co2Weight * co2Saved) + (treesWeight * treesPlanted) - (moneyWeight * moneySaved);
+            }
+
+            // Display metrics in the DOM
+
         </script>
-        
+
 
 </body>
 
