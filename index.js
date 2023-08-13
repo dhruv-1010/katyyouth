@@ -103,9 +103,6 @@ the journey api routes
 //   });
 
 */
-app.get('/map',(req,res)=>{
-    res.render('test');
-})
 
 app.get('/search', async (req, res) => {
   const searchLocation = req.query.location;
@@ -158,37 +155,7 @@ app.get('/route/show/:id', async (req, res) => {
     // console.log(found);
     res.render('journey/show', { found })
 })
-// additional routes
-// app.get('/products/:id/edit',async (req,res)=>{
-//     let {id} = req.params;
-//     let found = await Product.findById(id);
-//     // console.log("mika");
-//     res.render('products/edit',{found});
-// })
-
-
-// app.patch('/products/:id',async (req,res)=>{
-//     let { id }= req.params;
-//     let {name ,img ,price ,desc}=  req.body;
-//     await Product.findByIdAndUpdate(id,{name,desc,price,img});
-//     res.redirect('/products');
-// })
-// /*
-
-// /*
-// // route for editing
-// */
-
-// // route for deleteing shit
-// router.delete('/products/:id',async (req,res)=>{
-//     let {id} = req.params;
- //     await Product.findByIdAndDelete(id);
-//     res.redirect('/products');
-// })
-
-// route 1 
-// main index route
-// 
+ 
 app.use(function(req,res,next){
     res.locals.currentUser = req.user;
     next();
