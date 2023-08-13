@@ -102,32 +102,54 @@ the journey api routes
 //     console.error('Error searching journeys:', error);
 //   });
 
+*/
+
+app.get('/search', async (req, res) => {
+  const searchLocation = req.query.location;
+  try {
+    // Construct a case-insensitive regex for search
+    const regex = new RegExp(searchLocation, 'i');
+    // Perform the search query using the regex
+    const journeyObj = await JourneyDB.find({
+      $or: [
+        { fromLocation: regex },
+        { toLocation: regex },
+      ],
+    });
+
+    res.render('journey/journey', { journeyObj }); // Render the search results page
+  } catch (error) {
+    console.error('Error searching journeys:', error);
+    res.status(500).send('Internal server error');
+  }
+});
+
+
 // const dumm = new JourneyDB(dummy).save();
 // app.get('/')
 // show route 1
 // enter details route 
-*/
 
 app.get('/route',async (req,res)=>{
-    const journeyObj = await JourneyDB.find({});
+    const journeyObj = await JourneyDB.find({}).sort({$natural:-1});
     res.render('journey/journey.ejs',{journeyObj});
 })
-// app.get('/route/add', (req, res) => {
-//     if (req.isAuthenticated()) {
-//         res.render('journey/add.ejs');
-//     } else {
-//         res.redirect('/login');
-//     }
+app.get('/route/add', (req, res) => {
+    if (req.isAuthenticated()) {
+        res.render('journey/add.ejs');
+    } else {
+        res.redirect('/login');
+    }
+})
 
-// })
 // // third route post request
-// app.post('/route', async (req, res) => {
-//     let { name, email, mobile, fromLocation, toLocation, date } = req.body;
-//     await JourneyDB.create({ name, email, mobile, fromLocation, toLocation, date });
-//     res.redirect('/route');
-// })
+app.post('/route', async (req, res) => {
+    let { name, email, mobile, fromLocation, toLocation, date } = req.body;
+    await JourneyDB.create({ name, email, mobile, fromLocation, toLocation, date });
+    res.redirect('/route');
+})
 // show a single route
-app.get('/route/:id', async (req, res) => {
+app.get('/route/show/:id', async (req, res) => {
     let { id } = req.params;
     let found = await JourneyDB.findById(id);
     // console.log(found);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,199 +12,293 @@
         }
     </style> -->
     <style>
-         h1 {
-    color: #07f21a;
-    text-align: center;
-    font-weight: 700;
-    font-family: "Times New Roman", Times, serif;
-    font-size: 4rem;
-    text-shadow: 5px 5px 8px #cbfacb;
-  }
-  #leaderboard {
-    width: 98%;
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@600;800&family=Signika:wght@600&display=swap');
 
-    position: relative;
-    --shadow: 4px -4px 4px 4px rgb(0 0 0 / 0.25);
-  box-shadow: var(--shadow);
-    margin: 0px 20px;
-    overflow-x: hidden;
-  }
-  table {
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  table-layout: fixed;
-}
+        h1 {
+            color: #42c94d;
+            text-align: center;
+            font-weight: 700;
+            font-family: "DM Serif Display", Times, serif;
+            font-size: 4rem;
+            text-shadow: 5px 5px 8px #cbfacb;
+        }
 
-table caption {
-  font-size: 1.5em;
-  margin: .5em 0 .75em;
-}
-.table-head td{
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-}
-.table-head{
-    font-size: 1.2rem;
-}
-table tr {
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  padding: .35em;
-}
+        #leaderboard {
+            width: 98%;
 
-table th,
-table td {
-  padding: .625em;
-  text-align: center;
-}
+            position: relative;
+            --shadow: 4px -4px 4px 4px rgb(0 0 0 / 0.25);
+            box-shadow: var(--shadow);
+            margin: 0px 20px;
+            overflow-x: hidden;
+        }
 
-table th {
-  font-size: .85em;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-.detailed{
-    background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  }
-  .detailed:hover{
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
-tr:hover {
-			background: rgba(123, 153, 218, .1);
-		}
-@media screen and (max-width: 600px) {
-  table {
-    border: 0;
-  }
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            table-layout: fixed;
+            border-radius: 50px;
+        }
 
-  table caption {
-    font-size: 1.3em;
-  }
-  
-  table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-  
-  table tr {
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: .625em;
-  }
-  
-  table td {
-    border-bottom: 1px solid #ddd;
-    display: block;
-    font-size: .8em;
-    text-align: right;
-  }
-  
-  table td::before {
-    /*
+        table caption {
+            font-size: 1.5em;
+            margin: .5em 0 .75em;
+        }
+
+        .table-head td {
+            background-color: #096d0c;
+            color: white;
+            font-weight: bold;
+
+        }
+
+        .table-head {
+            font-size: 1.2rem;
+        }
+
+        table tr {
+            background-color: #f8f8f8;
+            border: 1px solid #2e2626;
+            padding: .35em;
+            border-radius: 35px;
+
+        }
+
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+
+        table th {
+            font-size: .85em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .detailed {
+            background-color: #043306;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 15px;
+            -webkit-transition-duration: 0.4s;
+            /* Safari */
+            transition-duration: 0.4s;
+        }
+
+        .detailed:hover {
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        tr:hover {
+            background: rgba(123, 153, 218, .1);
+        }
+
+        @media screen and (max-width: 600px) {
+            table {
+                border: 0;
+            }
+
+            table caption {
+                font-size: 1.3em;
+            }
+
+            table thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+            }
+
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+            }
+
+            table td::before {
+                /*
     * aria-label has no advantage, it won't be read inside a table
     content: attr(aria-label);
     */
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-  table td:last-child {
-    border-bottom: 0;
-  }
- 
-}
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
 
+            table td:last-child {
+                border-bottom: 0;
+            }
 
+        }
 
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
+        ul {
+            list-style: none;
+            display: flex;
+            font-size: 1.8vw;
+            background-color:#ccc;
+            font-family: "DM Serif Display", Times, serif;    
+        }
+        li {
+            margin: 10px;
+        }
 
+        a:hover {
+            color:#22a526;
+        }
 
+        #headd {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 10px 10vw;
+        }
 
+        #head2 img {
+            height: 25vw;
+        }
 
+        #head1 {
+            font-size: 3vw;
+            font-family: 'DM Serif Display', sans-serif;
+        }
 
+        #search{
+            display: grid;
+            text-align: center;
+        }
 
+        #search input{
+            width:50vw;
+            font-size: 2vw;
+            margin:10px;
+            display: inline-block;
+            font-family: "Signika", Times, serif;
+            border-radius: 20px;
+            border: 3px solid #22a526;
+            padding: 5px;
+        }   
 
+        .buttons{
+            font-size: 1.5vw;
+            padding: 10px;
+            border-radius: 20px;
+            background-color:#42c94d;
+            border: 0;
+        }
 
-
-
-/* general styling */
-body {
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.25;
-}
-        </style>
+        /* general styling */
+        body {
+            font-family: "Signika", sans-serif;
+            line-height: 1.25;
+        }
+    </style>
     <!-- <link rel="stylesheet" href="/public/eco_rides.css"> -->
 </head>
+
 <body>
-    <h1>EcoRides</h1>
-    <div id="parent">
+    <div id="lo">
+
+        <h1>EcoRides</h1>
         <nav id="navbar">
-        <!-- <h1 id="head">EcoRides</h1> -->
-        <ul id="list">
-            <a href="/home">
-                <li id="home">Home</li>
-            </a>
-            <a href="#">
-                <li id="contact">Contact Volunteers!!</li>
-            </a>
-        </ul>
-    </nav>
-    <img src="undarw (5).svg" alt="">
+            <!-- <h1 id="head">EcoRides</h1> -->
+            <ul id="list">
+                <a href="/home">
+                    <li id="home">Home</li>
+                </a>
+                <a href="#">
+                    <li id="contact">Contact Volunteers!!</li>
+                </a>
+            </ul>
+        </nav>
+
+    </div>
+    <div id="headd">
+        <div id="head1">
+            <h5>wanna add yours?? <a href="route/add">
+                    click here !!
+                </a>
+            </h5>
+            <h6>make sure to login before ...</h6>
+        </div>
+        <div id="head2">
+            <img src="tree.svg">
+        </div>
+    </div>
+    <div id="search">
+        <h1>Search for Journeys</h1>
+        <form action="/search" method="GET">
+            <label for="location"></label>
+            <input type="text" id="location" name="location" required placeholder="Enter your Destination">
+            <button type="submit" class="buttons">Search</button>
+        </form>
+        <a href="/route">
+            <button class="buttons" style="background-color:red">Reset</button>
+        </a>
+    </div>
     <div id="leaderboard">
         <table>
-          
-       <tr class="table-head">
-        <td>Name</td>
-        <td>Date</td>
-        <td>From</td>
-        <td>To</td>
-        <td>Details</td>
-       </tr>
-    <!-- iske niche card laga do bass  -->
 
-    <% for(let item of journeyObj){ %>
-        <!-- isme changes krke display kara de  -->
-        <%
-        const fullDate = new Date("Sat Aug 12 2023 12:44:13 GMT+0530 (India Standard Time)");
-        const formattedDate = fullDate.toLocaleDateString("en-US");
-    %>
-        <tr>
-        <td class="name"><%=item.name%></td>
-        <td class="points"><%=formattedDate%></td>
-        <td class="name"><%=item.fromLocation%></td>
-        <td class="name"><%=item.toLocation%></td>
-        <td>
-        <a href="/route/<%=item._id%>">
-            <!-- ye find more mai krenge ab  -->
-            <button class="detailed">Find More!!</button>
-        </a>
-        </td>
-        </tr>
-        <%}%>
-    </table>
-</div>
+            <tr class="table-head" style="font-size:2vw;font-family:'Signika',cursive;">
+                <td>Name</td>
+                <td>Date</td>
+                <td>From</td>
+                <td>To</td>
+                <td>Details</td>
+            </tr>
+            <!-- iske niche card laga do bass  -->
+
+            <% for(let item of journeyObj){ %>
+                <!-- isme changes krke display kara de  -->
+                <tr style="font-size:2vw;font-family:'Signika',cursive;">
+                    <td class="name">
+                        <%=item.name%>
+                    </td>
+                    <td class="points">
+                        <%=item.date.toDateString()%>
+                    </td>
+                    <td class="name">
+                        <%=item.fromLocation%>
+                    </td>
+                    <td class="name">
+                        <%=item.toLocation%>
+                    </td>
+                    <td>
+                        <a href="/route/show/<%=item._id%>">
+                            <!-- ye find more mai krenge ab  -->
+                            <button class="detailed">Find More!!</button>
+                        </a>
+                    </td>
+                </tr>
+                <%}%>
+        </table>
 </body>
+
 </html>
