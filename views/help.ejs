@@ -1,0 +1,173 @@
+<%- include('./partials/navbar') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+.container {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+h2{
+    font-family: 'Times New Roman', Times, serif;
+   
+}
+/* ... your existing CSS ... */
+.pair{
+  margin: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.contact-section {
+  max-width: 800px;
+  margin: 40px 30px;
+  padding: 20px;
+  /* border: 1px solid #ddd; */
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.contact-section strong {
+  font-weight: bold;
+}
+
+/* ... your existing styles ... */
+
+.help-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  flex: 1;
+  /* border: 1px solid #ddd; */
+}
+
+.help-section h2 {
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+
+.help-section ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+  margin-top: 15px;
+}
+
+.help-section li {
+  font-size: 1.1em;
+  line-height: 1.6em;
+  
+}
+.journey{
+  margin :40px auto;
+}
+
+    .journey h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .journey p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .journey ol {
+      list-style: decimal;
+      font-size: 16px;
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    .journey li {
+      margin-bottom: 10px;
+    }
+    .images{
+      flex: 1;
+      margin-top: 20px;
+      height: 300px;
+      width: 300px;
+    }
+    .image-section {
+      flex: 1;
+    display: flex;
+    justify-content: center; /* Horizontal alignment */
+    align-items: center;     /* Vertical alignment */
+       /* Adjust as needed */
+}
+
+.image-section img {
+    height: 100%;         /* Ensure the image doesn't exceed container width */
+    width: 100%; 
+    max-height:400px;
+    width: 400px;
+    margin: 40px auto;       /* Ensure the image doesn't exceed container height */
+}
+    @media screen and (max-width: 1400px) {
+    .pair{
+        flex-direction: column;
+    }
+}
+
+    </style>
+</head>
+<body>
+  <div class="pair">
+    <section class="help-section">
+        <h2>How to Use EcoRides ?</h2>
+        <ol>
+          <li>Go to the "Need a Ride" section.</li>
+          <li>If you're not registered, click on the "Click Here" option to register.</li>
+          <li>Book your ride and fill in all the necessary details. If there's someone with the same route, we'll notify you.</li>
+          <li>Check if someone else has the same route listed on EcoRides.</li>
+          <li>If you're interested in sharing a ride, click on "Find More" to explore other options.</li>
+          <li>If you find a suitable match, click on "Volunteer" to connect and coordinate the ride.</li>
+        </ol>
+      </section>
+      <section class="image-section">
+        <img src="undraw (2).svg" alt="Centered Image">
+    </section>
+      <!-- <img class ="images" src="undraw (2).svg" alt="Image 2"> -->
+    </div>
+    <div class="pair">
+      <div class="journey">
+        <h1>How to fill the form?</h1>
+        <p>Requesting a ride is easy! Just follow these steps:</p>
+        
+        <ol>
+          <li>Enter your <strong>First Name</strong> in the designated field.</li>
+          <li>Specify the <strong>PickUp Point</strong> by typing in the address or location where you'll be starting your journey.</li>
+          <li>Provide the <strong>Destination Point</strong> by entering the address or location of your final destination.</li>
+          <li>Enter your <strong>Contact Number</strong> so that others can easily reach you for coordination.</li>
+          <li>Share your <strong>Email</strong> address for any communication related to the ride.</li>
+          <li>Indicate the <strong>Number of Persons</strong> traveling with you using the provided field.</li>
+          <li>Choose the appropriate <strong>Vehicle Type</strong> from the dropdown menu. If none of the options apply, select "None".</li>
+          <li>In the <strong>Additional Information</strong> textarea, you can provide any extra details you'd like to share with potential ride partners.</li>
+          <li>Click the <strong>SUBMIT</strong> button to send your ride request.</li>
+        </ol>
+      </div>
+      <section class="image-section">
+        <img src="undraw (3).svg" alt="Centered Image">
+    </section>
+  </div>
+      <!-- ... your existing HTML ... -->
+<section class="contact-section">
+    <h2>Contact Us</h2>
+    <p>If you have further questions or need assistance:</p>
+    <p>Feel free to contact our customer support team at support@ecorides.com.</p>  
+  </section>
+  <!-- ... your existing HTML ... -->
+  
+</body>
+</html>

@@ -12,6 +12,16 @@
     />
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .username{
+        margin-top: 15px;
+        width: 150px;
+      }
+      .about{
+            margin-right: 20px;
+            
+        }
+    </style>
   </head>
   <body>
     
@@ -25,11 +35,13 @@
             <a href="/route">
                 <li id="ride">Need a Ride?</li>
             </a>
-            <a href="#">
+            <a href="/volunteers">
                 <li id="contact">Contact Volunteers!!</li>
             </a>
+            <a href="/about" class="about">About</a>
+            <a href="/help">Help</a>
         </ul>
-        <p>hello <%= currentUser.username %> </p>
+        <p class="username"> <%= currentUser.username %> </p>
         <a href="/logout"><button class=" button login-button" >Logout</button></a>
     </nav>
     <section  id="main">

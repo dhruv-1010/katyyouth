@@ -1,0 +1,54 @@
+<%- include('./partials/navbar') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  /* font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;*/
+  /* background-color: #f0f0f0;  */
+}
+
+.contact-card {
+    background-color: #f0f0f0; 
+  border-radius: 10px;
+  margin:10px 5vw;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+img{
+  height:15vw;
+}
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="cards">
+    <div class="contact-card">
+      <img src="join.svg" alt="">
+      <h1>SignUp for Volunteering</h1>
+      <a href="/login">Join here</a>
+      </div>
+      <div class="contact-card">
+        <img src="work.svg" alt="">
+        <h1>Find in community</h1>
+        <a href="/route">Find here</a>
+      </div>
+    </div>
+    
+</body>
+</html>

@@ -164,15 +164,16 @@
             list-style: none;
             display: flex;
             font-size: 1.8vw;
-            background-color:#ccc;
-            font-family: "DM Serif Display", Times, serif;    
+            background-color: #ccc;
+            font-family: "DM Serif Display", Times, serif;
         }
+
         li {
             margin: 10px;
         }
 
         a:hover {
-            color:#22a526;
+            color: #22a526;
         }
 
         #headd {
@@ -190,28 +191,32 @@
             font-family: 'DM Serif Display', sans-serif;
         }
 
-        #search{
+        #search {
             display: grid;
             text-align: center;
         }
 
-        #search input{
-            width:50vw;
+        #search input {
+            width: 50vw;
             font-size: 2vw;
-            margin:10px;
+            margin: 10px;
             display: inline-block;
             font-family: "Signika", Times, serif;
             border-radius: 20px;
             border: 3px solid #22a526;
             padding: 5px;
-        }   
+        }
 
-        .buttons{
+        .buttons {
             font-size: 1.5vw;
             padding: 10px;
             border-radius: 20px;
-            background-color:#42c94d;
+            background-color: #42c94d;
             border: 0;
+        }
+
+        .buttons:hover {
+            cursor: pointer;
         }
 
         /* general styling */
@@ -233,7 +238,7 @@
                 <a href="/home">
                     <li id="home">Home</li>
                 </a>
-                <a href="#">
+                <a href="/volunteers">
                     <li id="contact">Contact Volunteers!!</li>
                 </a>
             </ul>
@@ -262,6 +267,8 @@
         <a href="/route">
             <button class="buttons" style="background-color:red">Reset</button>
         </a>
+        <button class="buttons btn btn-primary" style="text-align: center;width:10vw;" id="sendEmailButton">Send Matched
+            Journey Emails</button>
     </div>
     <div id="leaderboard">
         <table>
@@ -299,6 +306,18 @@
                 </tr>
                 <%}%>
         </table>
+        <script>
+            document.getElementById('sendEmailButton').addEventListener('click', async () => {
+                try {
+                    const response = await fetch('/send-emails', { method: 'POST' });
+                    const result = await response.json();
+                    console.log(result);
+                    console.log("button clicked");
+                } catch (error) {
+                    console.error('Error sending emails:', error);
+                }
+            });
+        </script>
 </body>
 
 </html>
